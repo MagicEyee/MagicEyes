@@ -19,7 +19,7 @@ const EditCustomer = () => {
   useEffect(() => {
     // Fetch customers from API
     axios
-      .get("http://localhost:3001/user/admin/getAllUser")
+      .get("/user/admin/getAllUser")
       .then((response) => {
         setCustomers(response.data.data);
       })
@@ -33,7 +33,7 @@ const EditCustomer = () => {
     setSelectedCustomer(value);
     if (value) {
       await axios
-        .get(`http://localhost:3001/user/admin/getUserById/${value._id}`)
+        .get(`/user/admin/getUserById/${value._id}`)
         .then((response) => {
           done = true;
           const customerData = response.data.data;
@@ -61,9 +61,7 @@ const EditCustomer = () => {
 
     if (done) {
       await axios
-        .get(
-          `http://localhost:3001/user/admin/getAllAdressForUser/${value._id}`
-        )
+        .get(`/user/admin/getAllAdressForUser/${value._id}`)
         .then((responce) => {
           setAdresses(responce.data.data);
           console.log(responce.data.data);
@@ -82,10 +80,7 @@ const EditCustomer = () => {
 
   const handleSave = (values) => {
     axios
-      .put(
-        `http://localhost:3001/user/admin/updateUser/${selectedCustomer._id}`,
-        values
-      )
+      .put(`/user/admin/updateUser/${selectedCustomer._id}`, values)
       .then((response) => {
         alert("Customer details updated successfully!");
       })

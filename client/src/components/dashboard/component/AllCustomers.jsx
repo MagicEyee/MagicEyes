@@ -12,7 +12,7 @@ function AllCustomers() {
     setCustomers([]);
     async function fetch() {
       await axios
-        .get("http://localhost:3001/user/admin/getAllUser")
+        .get("/user/admin/getAllUser")
         .then((response) => {
           console.log(response.data.data);
           response.data.data.map((p) => {

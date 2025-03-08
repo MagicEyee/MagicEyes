@@ -27,7 +27,7 @@ function EditOrder({ ChoosenOrder }) {
     }
     async function fetchData() {
       await axios
-        .get("http://localhost:3001/user/admin/getAllUser")
+        .get("/user/admin/getAllUser")
         .then((response) => {
           setUsers(response.data.data);
         })
@@ -44,9 +44,7 @@ function EditOrder({ ChoosenOrder }) {
     setError(null);
     async function fetchData() {
       await axios
-        .get(
-          `http://localhost:3001/order/admin/getCustomerOrders/${selectedUserId}`
-        )
+        .get(`/order/admin/getCustomerOrders/${selectedUserId}`)
         .then((response) => {
           setOrders(response.data.data);
         })
@@ -61,7 +59,7 @@ function EditOrder({ ChoosenOrder }) {
     if (!selectedOrderId) return;
     setError(null);
     axios
-      .get(`http://localhost:3001/order/admin/getOrder/${selectedOrderId}`)
+      .get(`/order/admin/getOrder/${selectedOrderId}`)
       .then((response) => {
         console.log(response.data.data);
         setOrderDetails(response.data.data);

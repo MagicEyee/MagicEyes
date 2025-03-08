@@ -11,9 +11,7 @@ function Feedbacks() {
   useEffect(() => {
     async function fetchFeedbacks() {
       try {
-        const response = await axios.get(
-          "http://localhost:3001/message/getAll"
-        );
+        const response = await axios.get("/message/getAll");
         const feedbackData = response.data.data.map((p) => ({
           id: p._id,
           name: p.Name,

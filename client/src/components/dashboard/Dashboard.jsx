@@ -329,7 +329,7 @@ const Dashboard = () => {
     const token = Cookies.get("jwt2");
     if (token) {
       axios
-        .get("http://localhost:3001/user/getMe", {
+        .get("/user/getMe", {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => {

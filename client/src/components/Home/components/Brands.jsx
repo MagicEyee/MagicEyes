@@ -14,7 +14,7 @@ const Brands = () => {
   useEffect(() => {
     const fetchBrands = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/brands");
+        const response = await axios.get("/brands");
         setBrands(response.data.data);
       } catch (error) {
         console.error("Error fetching brands:", error);

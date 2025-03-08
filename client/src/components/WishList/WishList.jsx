@@ -19,14 +19,11 @@ const Cart = () => {
   console.log(token);
   const fetchCart = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:3001/user/getwishList",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.get("/user/getwishList", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setWishList(response.data.data);
     } catch (error) {
       console.error("Error fetching cart:", error);
@@ -38,17 +35,12 @@ const Cart = () => {
 
   const handleDelete = async (productId) => {
     try {
-      await axios.post(
-        `http://localhost:3001/user/DeleteFormWishList/${productId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      const response = await axios.get(
-        "http://localhost:3001/user/getWishList"
-      );
+      await axios.post(`/DeleteFormWishList/${productId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const response = await axios.get("/user/getWishList");
       setWishList(response.data.data);
     } catch (error) {
       console.error("Error deleting product from cart:", error);
@@ -68,7 +60,7 @@ const Cart = () => {
     try {
       await axios
         .patch(
-          `http://localhost:3001/user/EditQuatityInWishList/${productId}`,
+          `/user/EditQuatityInWishList/${productId}`,
           { quantity },
           {
             headers: {
@@ -77,18 +69,14 @@ const Cart = () => {
           }
         )
         .then(async () => {
-          const response = await axios.get(
-            "http://localhost:3001/user/getWishList/"
-          );
+          const response = await axios.get("/user/getWishList/");
           setWishList(response.data.data);
         })
         .catch(async (error) => {
           await axios
-            .post(`http://localhost:3001/user/DeleteFormWishList/${productId}`)
+            .post(`/user/DeleteFormWishList/${productId}`)
             .then(async () => {
-              const response = await axios.get(
-                "http://localhost:3001/user/getWishList/"
-              );
+              const response = await axios.get("/user/getWishList/");
               setWishList(response.data.data);
             });
         });
@@ -100,7 +88,7 @@ const Cart = () => {
   const MoveToCart = async (productId, quantity) => {
     await axios
       .post(
-        `http://localhost:3001/user/addTocart/${productId}`,
+        `/user/addTocart/${productId}`,
         {
           quantity: quantity,
         },
@@ -118,7 +106,7 @@ const Cart = () => {
   const MoveAllToCart = async () => {
     await axios
       .post(
-        `http://localhost:3001/user/addAllToCart`,
+        `/user/addAllToCart`,
         {},
         {
           headers: {

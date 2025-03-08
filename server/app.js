@@ -28,7 +28,7 @@ app.use(cookiesMiddleware());
 app.use(express.static("./public"));
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://magicceyee.netlify.app",
     credentials: true,
     withCredentials: true,
   })

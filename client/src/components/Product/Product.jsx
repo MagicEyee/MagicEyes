@@ -26,9 +26,7 @@ const Product = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:3001/product/get/${id}`
-        );
+        const response = await axios.get(`/product/get/${id}`);
         setProduct(response.data.data);
       } catch (error) {
         console.error("Error fetching product:", error);
@@ -38,7 +36,7 @@ const Product = () => {
     // const fetchRecommendedProducts = async () => {
     //   try {
     //     const response = await axios.get(
-    //       "http://localhost:3001/products/recommended"
+    //       "/products/recommended"
     //     );
     //     setRecommendedProducts(response.data.data);
     //   } catch (error) {
@@ -52,7 +50,7 @@ const Product = () => {
 
   const handleAddToCart = async () => {
     try {
-      await axios.post("http://localhost:3001/cart", {
+      await axios.post("/cart", {
         productId: product._id,
         quantity,
       });
@@ -64,7 +62,7 @@ const Product = () => {
 
   const handleAddToWishlist = async () => {
     try {
-      await axios.post("http://localhost:3001/wishlist", {
+      await axios.post("/wishlist", {
         productId: product._id,
       });
       alert("Product added to wishlist");

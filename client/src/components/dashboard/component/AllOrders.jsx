@@ -54,28 +54,26 @@ function AllOrders({ setSelectedState, setChoosenOrder }) {
     console.log("object");
     setRows([]);
     async function fetchData() {
-      await axios
-        .get("http://localhost:3001/order/admin/getAllOredrsForAdmin")
-        .then((response) => {
-          console.log(response.data);
-          response.data.data.map((p) => {
-            console.log();
+      await axios.get("/order/admin/getAllOredrsForAdmin").then((response) => {
+        console.log(response.data);
+        response.data.data.map((p) => {
+          console.log();
 
-            setRows((prevRows) => [
-              ...prevRows,
-              {
-                id: p.trackingNumber,
-                idd: p._id,
-                customerName: p.customerName,
-                phoneNumber: p.phoneNumber,
-                TotalPrice: p.totalPrice,
-                status: p.status,
-                paymentMethod: p.paymentMethod,
-                createdAt: new Date(p.createdAt),
-              },
-            ]);
-          });
+          setRows((prevRows) => [
+            ...prevRows,
+            {
+              id: p.trackingNumber,
+              idd: p._id,
+              customerName: p.customerName,
+              phoneNumber: p.phoneNumber,
+              TotalPrice: p.totalPrice,
+              status: p.status,
+              paymentMethod: p.paymentMethod,
+              createdAt: new Date(p.createdAt),
+            },
+          ]);
         });
+      });
     }
     fetchData();
   }, []);

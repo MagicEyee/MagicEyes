@@ -20,7 +20,7 @@ function Analytics() {
   useEffect(() => {
     async function fetchAnalytics() {
       try {
-        const response = await axios.get("http://localhost:3001/analytics");
+        const response = await axios.get("/analytics");
         setAnalytics(response.data);
       } catch (error) {
         console.error("There was an error fetching the analytics data!", error);

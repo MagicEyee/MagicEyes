@@ -15,7 +15,7 @@ function AllCategory() {
 
     async function fetchData() {
       await axios
-        .get("http://localhost:3001/category/getAll")
+        .get("/category/getAll")
         .then((response) => {
           setCategories(response.data);
         })

@@ -22,15 +22,9 @@ const BestProducts = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const latestResponse = await axios.get(
-          "http://localhost:3001/product/latestProduct"
-        );
-        const bestSellersResponse = await axios.get(
-          "http://localhost:3001/product/bestSeller"
-        );
-        const saleResponse = await axios.get(
-          "http://localhost:3001/product/saleProduct"
-        );
+        const latestResponse = await axios.get("/product/latestProduct");
+        const bestSellersResponse = await axios.get("/product/bestSeller");
+        const saleResponse = await axios.get("/product/saleProduct");
         setLatestProducts(latestResponse.data.data);
         setBestSellers(bestSellersResponse.data.data);
         setSaleProducts(saleResponse.data.data);
@@ -49,7 +43,7 @@ const BestProducts = () => {
   const handleCartClick = async (id) => {
     try {
       const response = await axios.post(
-        `http://localhost:3001/user/addTocart/${id}`,
+        `/user/addTocart/${id}`,
         {
           quantity: 1,
         },
@@ -68,7 +62,7 @@ const BestProducts = () => {
   const handleWishListClick = async (id) => {
     try {
       await axios.post(
-        `http://localhost:3001/user/addtoWishList/${id}`,
+        `/user/addtoWishList/${id}`,
         {
           quantity: 1,
         },

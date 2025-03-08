@@ -33,16 +33,14 @@ function EditProduct({ selectedIDD }) {
       console.log(selectedIDD);
     }
     async function fetchData() {
-      await axios
-        .get("http://localhost:3001/product/getAll")
-        .then((response) => {
-          setProducts(response.data.data);
-        });
+      await axios.get("/product/getAll").then((response) => {
+        setProducts(response.data.data);
+      });
     }
     fetchData();
     async function fetch() {
       await axios
-        .get("http://localhost:3001/category/getAll", {
+        .get("/category/getAll", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -66,7 +64,7 @@ function EditProduct({ selectedIDD }) {
     if (!selectedID) return;
     async function fetchData() {
       await axios
-        .get(`http://localhost:3001/product/get/${selectedID}`)
+        .get(`/product/get/${selectedID}`)
         .then((response) => {
           setSelectedProduct(response.data.data);
           console.log(response.data.data);
@@ -208,7 +206,7 @@ function EditProduct({ selectedIDD }) {
             })}
             onSubmit={async (values) => {
               await axios.patch(
-                `http://localhost:3001/product/admin/Edit/${selectedProduct._id}`,
+                `/product/admin/Edit/${selectedProduct._id}`,
                 values,
                 {
                   headers: {
@@ -372,7 +370,7 @@ function EditProduct({ selectedIDD }) {
             color="secondary"
             onClick={async () => {
               await axios.delete(
-                `http://localhost:3001/product/admin/Delete/${selectedProduct._id}`,
+                `/product/admin/Delete/${selectedProduct._id}`,
                 {
                   headers: {
                     Authorization: `Bearer ${token}`,

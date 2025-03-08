@@ -21,7 +21,7 @@ function AllPromotions() {
     setPromotions([]);
     async function fetchPromotions() {
       await axios
-        .get("http://localhost:3001/ads/getAll", {
+        .get("/ads/getAll", {
           headers: {
             Authorization: "Bearer " + token,
           },
@@ -83,7 +83,7 @@ function AllPromotions() {
     formData.append("isActive", values.isActive);
 
     try {
-      await axios.post("http://localhost:3001/promotions", formData, {
+      await axios.post("/promotions", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -272,7 +272,7 @@ function AllPromotions() {
               console.log(values);
               await axios
                 .patch(
-                  `http://localhost:3001/ads/editAd/${selectedPromotion.id}`,
+                  `/ads/editAd/${selectedPromotion.id}`,
                   {
                     name: `${values.name}`,
                     expireDate: values.expireDate,

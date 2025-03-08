@@ -35,7 +35,7 @@ const Login = () => {
 
   const onSubmit = (values, { setSubmitting }) => {
     axios
-      .post("http://localhost:3001/user/login", values)
+      .post("/user/login", values)
       .then((response) => {
         console.log("Login successful", response.data);
         Cookies.set("jwt2", response.data.token);

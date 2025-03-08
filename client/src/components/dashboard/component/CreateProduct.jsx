@@ -25,7 +25,7 @@ const CreateProduct = () => {
   useEffect(() => {
     async function fetch() {
       await axios
-        .get("http://localhost:3001/category/getAll", {
+        .get("/category/getAll", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -42,7 +42,7 @@ const CreateProduct = () => {
           });
         });
 
-      axios.get("http://localhost:3001/Brands/").then((response) => {
+      axios.get("/Brands/").then((response) => {
         console.log(response.data);
         const cat = [];
         response.data.data.map((item) => {
@@ -104,7 +104,7 @@ const CreateProduct = () => {
       console.log("file", file);
     });
     await axios
-      .post("http://localhost:3001/product/admin/createProduct", formData, {
+      .post("/product/admin/createProduct", formData, {
         headers: {
           Authorization: "Bearer " + token,
           "Content-Type": "form-data",

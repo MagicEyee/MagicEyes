@@ -23,13 +23,13 @@ function App() {
   const dispatch = useDispatch();
   const opendash = useSelector((state) => state.auth.opendash);
 
-  axios.defaults.baseURL = "http://localhost:3001";
+  axios.defaults.baseURL = "https://magic-eyes-six.vercel.app/";
   axios.defaults.withCredentials = true;
 
   useEffect(() => {
     if (Cookies.get("jwt2")) {
       axios
-        .get("http://localhost:3001/user/getMe", {
+        .get("/user/getMe", {
           headers: { Authorization: `Bearer ${Cookies.get("jwt2")}` },
         })
         .then((response) => {
@@ -43,7 +43,7 @@ function App() {
     }
     if (Cookies.get("jwt")) {
       axios
-        .get("http://localhost:3001/user/getMe", {
+        .get("/user/getMe", {
           headers: { Authorization: `Bearer ${Cookies.get("jwt")}` },
         })
         .then((response) => {

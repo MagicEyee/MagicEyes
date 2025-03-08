@@ -10,7 +10,7 @@ function AllCustomers() {
     setCustomers([]);
     async function fetch() {
       await axios
-        .get("http://localhost:3001/user/admin/getAllUser")
+        .get("/user/admin/getAllUser")
         .then((response) => {
           console.log(response.data.data);
           response.data.data.map((p) => {
@@ -133,12 +133,12 @@ function AllCustomers() {
             onClick={async () => {
               if (choosen.cur) {
                 await axios.patch(
-                  `http://localhost:3001/user/admin/changeAdminToUser/${choosen.id}`
+                  `/user/admin/changeAdminToUser/${choosen.id}`
                 );
                 setChoosen(null);
               } else {
                 await axios.patch(
-                  `http://localhost:3001/user/admin/changeUserToAdmin/${choosen.id}`
+                  `/user/admin/changeUserToAdmin/${choosen.id}`
                 );
                 setChoosen(null);
               }

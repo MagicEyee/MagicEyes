@@ -8,12 +8,10 @@ const Categories = () => {
 
   useEffect(() => {
     async function fetch() {
-      await axios
-        .get("http://localhost:3001/category/getAll")
-        .then((response) => {
-          console.log(response.data);
-          setCategories(response.data);
-        });
+      await axios.get("/category/getAll").then((response) => {
+        console.log(response.data);
+        setCategories(response.data);
+      });
     }
     fetch();
   }, []);

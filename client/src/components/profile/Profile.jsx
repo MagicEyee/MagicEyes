@@ -31,9 +31,7 @@ function Profile() {
   const token = useSelector((state) => state.auth.token);
   const getAddress = async (id) => {
     try {
-      const response = await axios.get(
-        "http://localhost:3001/adress/getAdress/" + id
-      );
+      const response = await axios.get("/adress/getAdress/" + id);
       return response.data.data;
     } catch (error) {
       console.error("Error fetching address:", error);
@@ -53,25 +51,19 @@ function Profile() {
   useEffect(() => {
     const fetchOrdersAndAddresses = async () => {
       try {
-        const ordersResponse = await axios.get(
-          "http://localhost:3001/order/getAllOredrsForMe",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const ordersResponse = await axios.get("/order/getAllOredrsForMe", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         const ordersData = ordersResponse.data.data;
 
         const addressesData = {};
-        const allAdresses = await axios.get(
-          "http://localhost:3001/user/getAllAdressForMe",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const allAdresses = await axios.get("/user/getAllAdressForMe", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         for (const order of ordersData) {
           const address = await getAddress(order.deliveryAddressID);
           addressesData[order.deliveryAddressID] = address;

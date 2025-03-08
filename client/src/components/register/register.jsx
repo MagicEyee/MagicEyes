@@ -36,13 +36,11 @@ const Register = () => {
 
   const handleSubmit = async (values) => {
     try {
-      await axios
-        .post("http://localhost:3001/user/register", values)
-        .then((response) => {
-          Cookies.set("jwt2", response.data.token);
-          Dispatch(setUser(response.data));
-          navigate(-1);
-        });
+      await axios.post("/user/register", values).then((response) => {
+        Cookies.set("jwt2", response.data.token);
+        Dispatch(setUser(response.data));
+        navigate(-1);
+      });
     } catch (error) {
       console.error("There was an error registering!", error);
     }

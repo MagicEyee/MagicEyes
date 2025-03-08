@@ -140,7 +140,7 @@ function AllProducts({ setSelectedState, setChoosenProduct }) {
   useEffect(() => {
     setRows([]);
     axios
-      .get("http://localhost:3001/product/getAll")
+      .get("/product/getAll")
       .then((response) => {
         console.log(response.data.data);
         response.data.data.map((product) =>

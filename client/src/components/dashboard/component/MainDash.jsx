@@ -156,45 +156,41 @@ function MainDash() {
     setORows([]);
     setPRows([]);
     async function fetchData() {
-      await axios
-        .get("http://localhost:3001/product/getAll")
-        .then((response) => {
-          response.data.data.map((p) => {
-            setPRows((prev) => [
-              ...prev,
-              {
-                id: p._id,
+      await axios.get("/product/getAll").then((response) => {
+        response.data.data.map((p) => {
+          setPRows((prev) => [
+            ...prev,
+            {
+              id: p._id,
 
-                image: p.images[0].secure_url,
-                Name: p.Name,
-                Brand: p.Brand,
-                MainCategory: p.mainCategory,
-                price: p.price,
-                invertoryStock: p.invertoryStock,
-                createdAt: new Date(p.createdAt),
-              },
-            ]);
-          });
+              image: p.images[0].secure_url,
+              Name: p.Name,
+              Brand: p.Brand,
+              MainCategory: p.mainCategory,
+              price: p.price,
+              invertoryStock: p.invertoryStock,
+              createdAt: new Date(p.createdAt),
+            },
+          ]);
         });
-      await axios
-        .get("http://localhost:3001/order/admin/getAllOredrsForAdmin")
-        .then((response) => {
-          response.data.data.map((o) => {
-            setORows((prev) => [
-              ...prev,
-              {
-                id: o.trackingNumber,
-                idd: o._id,
-                customerName: o.customerName,
-                phoneNumber: o.phoneNumber,
-                TotalPrice: o.totalPrice,
-                status: o.status,
-                paymentMethod: o.paymentMethod,
-                createdAt: new Date(o.createdAt),
-              },
-            ]);
-          });
+      });
+      await axios.get("/order/admin/getAllOredrsForAdmin").then((response) => {
+        response.data.data.map((o) => {
+          setORows((prev) => [
+            ...prev,
+            {
+              id: o.trackingNumber,
+              idd: o._id,
+              customerName: o.customerName,
+              phoneNumber: o.phoneNumber,
+              TotalPrice: o.totalPrice,
+              status: o.status,
+              paymentMethod: o.paymentMethod,
+              createdAt: new Date(o.createdAt),
+            },
+          ]);
         });
+      });
     }
     fetchData();
   }, []);

@@ -26,7 +26,7 @@ const ProceedToCheckOut = () => {
   useEffect(() => {
     const fetchCart = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/user/getCart", {
+        const response = await axios.get("/user/getCart", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -39,14 +39,11 @@ const ProceedToCheckOut = () => {
 
     const fetchAdresses = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:3001/user/getAllAdressForMe",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await axios.get("/user/getAllAdressForMe", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         setAddresses(response.data.data);
         console.log(response.data.data);
       } catch (error) {
@@ -56,7 +53,7 @@ const ProceedToCheckOut = () => {
     // const fetchRecommendedProducts = async () => {
     //   try {
     //     const response = await axios.get(
-    //       "http://localhost:3001/products/recommended"
+    //       "/products/recommended"
     //     );
     //     setRecommendedProducts(response.data.data);
     //   } catch (error) {

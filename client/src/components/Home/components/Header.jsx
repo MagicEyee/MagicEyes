@@ -30,9 +30,7 @@ const Header = ({ user, admin, Udetails }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:3001/product/getAll`
-        );
+        const response = await axios.get(`/product/getAll`);
         setProducts(response.data.data);
       } catch (error) {
         console.error("Error fetching products:", error);

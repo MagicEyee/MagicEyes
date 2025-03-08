@@ -19,7 +19,7 @@ const Cart = () => {
   useEffect(() => {
     const fetchCart = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/user/getCart");
+        const response = await axios.get("/user/getCart");
         setCart(response.data.data);
       } catch (error) {
         console.error("Error fetching cart:", error);
@@ -29,7 +29,7 @@ const Cart = () => {
     // const fetchRecommendedProducts = async () => {
     //   try {
     //     const response = await axios.get(
-    //       "http://localhost:3001/products/recommended"
+    //       "/products/recommended"
     //     );
     //     setRecommendedProducts(response.data.data);
     //   } catch (error) {
@@ -43,15 +43,12 @@ const Cart = () => {
 
   const handleDelete = async (productId) => {
     try {
-      await axios.post(
-        `http://localhost:3001/user/deleteFromCart/${productId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      const response = await axios.get("http://localhost:3001/user/getCart");
+      await axios.post(`/user/deleteFromCart/${productId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const response = await axios.get("/user/getCart");
       setCart(response.data.data);
     } catch (error) {
       console.error("Error deleting product from cart:", error);
@@ -69,7 +66,7 @@ const Cart = () => {
   const MoveToWishList = async (productId, quantity) => {
     await axios
       .post(
-        `http://localhost:3001/user/addToWishList/${productId}`,
+        `/user/addToWishList/${productId}`,
         {
           quantity: quantity,
         },
@@ -87,7 +84,7 @@ const Cart = () => {
     console.log(productId, quantity);
     try {
       await axios.patch(
-        `http://localhost:3001/user/editCart/${productId}`,
+        `/user/editCart/${productId}`,
         { quantity },
         {
           headers: {
@@ -95,7 +92,7 @@ const Cart = () => {
           },
         }
       );
-      const response = await axios.get("http://localhost:3001/user/getCart");
+      const response = await axios.get("/user/getCart");
       setCart(response.data.data);
     } catch (error) {
       console.error("Error updating cart:", error);
