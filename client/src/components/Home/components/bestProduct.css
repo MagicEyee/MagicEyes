@@ -1,0 +1,149 @@
+.best-products {
+  padding: 20px;
+}
+@media (max-width: 500px) {
+  .best-products {
+    padding: 20px 5px;
+  }
+}
+
+/* .product-card {
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+} */
+
+.product-image {
+  width: 100%;
+  aspect-ratio: 1;
+  z-index: -1;
+  position: relative;
+  object-fit: cover;
+}
+
+.product-info {
+  border-top: 1px solid #2a9d8f;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  /* height: px; */
+}
+
+.sale-price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.original-price {
+  text-decoration: line-through;
+  margin-right: 10px;
+}
+
+.product-icons {
+  display: none;
+  /* position: absolute; */
+  gap: 10px;
+  width: 100%;
+  bottom: 85px;
+  background-color: #37bd9f;
+  padding-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  /* background-color: transparent; */
+  button {
+    background-color: transparent;
+    cursor: pointer;
+  }
+}
+
+.add-to-cart,
+.add-to-wishlist,
+.eye {
+  transition: 0.3s ease-in-out;
+  font-size: 26px;
+  svg {
+    width: 27px;
+    height: 27px;
+  }
+  background-color: transparent;
+}
+
+.portfolio__list-item {
+  color: #2a9d8f;
+  font-size: 24px;
+  font-weight: 700;
+  opacity: 0.5;
+  y: 50;
+  position: relative;
+  transition: 0.3s ease-in-out;
+  margin: 20px 10px;
+  font-family: var(--font-headding2);
+  padding: 0;
+  &:hover {
+    opacity: 0.7;
+
+    color: rgb(36, 126, 106);
+    &::before {
+      width: 30%;
+    }
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: rgb(36, 126, 106);
+    transition: 0.3s ease-in-out;
+  }
+  &.active-work {
+    opacity: 1;
+    y: 0l;
+    &:before {
+      width: 30%;
+    }
+  }
+}
+
+.ProductName {
+  font-size: 26px;
+  font-family: var(--font-headding2);
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: black;
+}
+.sale-price {
+  font-size: 22px;
+  font-family: var(--font-headding2);
+  color: #37bd9f;
+  font-weight: 700;
+  margin-bottom: 10px;
+  .original-price {
+    color: #888;
+  }
+}
+.justOPrice {
+  font-size: 22px;
+  font-weight: 700;
+  font-family: var(--font-headding2);
+  color: #37bd9f;
+}
