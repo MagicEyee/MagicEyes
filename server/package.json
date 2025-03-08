@@ -4,8 +4,8 @@
   "description": "server side for circleEye project ",
   "main": "server.js ",
   "scripts": {
-    "build": "next build",
     "start": "node server.js",
+    "build": "echo 'No build step needed for Express app'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

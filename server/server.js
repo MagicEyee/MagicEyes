@@ -16,9 +16,10 @@ mongoose.connect(process.env.CONN_STR, { dbName: dbnamee }).then((CONN) => {
 
 const port = process.env.PORT || 3002;
 console.log(process.env.PORT);
-const server = app.listen(port, () => {
-  console.log("server has started in port..." + `${port}`);
-});
+module.exports = app;
+// const server = app.listen(port, () => {
+//   console.log("server has started in port..." + `${port}`);
+// });
 process.on("unhandledRejection", (err) => {
   console.log(err.name, err.message);
   server.close(() => {
