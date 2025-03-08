@@ -5,7 +5,9 @@ const usercontroller = require("../controllers/UserController");
 const multer = require("multer");
 const UtiilsController = require("./../controllers/UtiilsController");
 const storage = multer.diskStorage({
-  destination: "uploads/",
+  destination: (req, file, cb) => {
+    cb(null, "/tmp/"); // ✅ Vercel allows writing here
+  },
   filename: (req, file, cb) => {
     cb(
       null,

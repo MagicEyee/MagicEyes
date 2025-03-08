@@ -7,7 +7,7 @@ const userController = require("./../controllers/UserController");
 const adsControlller = require("../controllers/AdsController");
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/"); // Destination folder
+    cb(null, "/tmp/"); // ✅ Vercel allows writing here
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + "-" + file.originalname); // Unique filename

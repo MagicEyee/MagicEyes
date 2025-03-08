@@ -4,7 +4,9 @@ const UserController = require("../controllers/UserController");
 const router = express.Router();
 const multer = require("multer");
 const storage = multer.diskStorage({
-  destination: "uploads/",
+  destination: (req, file, cb) => {
+    cb(null, "/tmp/"); // ✅ Vercel allows writing here
+  },
   filename: (req, file, cb) => {
     cb(
       null,
